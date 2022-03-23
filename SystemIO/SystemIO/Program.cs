@@ -12,12 +12,14 @@ namespace SystemIO
             //Chanllenge01();
             // Challenge02();
             //Challenge03();
+            int[] arr1 = { 5,7,9};
+            Challenge04(arr1);
             //int[] array = { 5, 5, 200, 21, 65, 30 };
             //Challenge05(array);
             //Challenge06();
             // Challenge07();
             //Challenge08();
-            Challenge09();
+           // Challenge09();
         }
 
         static int Chanllenge01()
@@ -118,22 +120,50 @@ namespace SystemIO
 
 
 
-        //static int Chanllenge04(int[] arr)
-        //{
-        //    int[] counting = new int[arr.Length];
-        //    for(int i = 0; i < arr.Length; i++)
-        //    {
-        //        for(int j = i+1; j < arr.Length; j++)
-        //        {
-        //            if(arr[i] == arr[j])
-        //            {
-        //                counting[i] += 1;
-        //                arr[j] = null;
-        //            }
-        //        }
+        static void Challenge04(int[] arr)
+        {
+           
+            int[] counting = new int[arr.Length];
+   
+            Array.Sort(arr);
+            int count =1;
+            int max = 0;
+            int sum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                
+                for(int j = i+1 ; j < arr.Length; j++)
+                {
+                    if(arr[i] == arr[j])
+                    {
+                        count += 1;
+                        i++;
+                    }
+                }
+                counting[i] = count;
+                if(counting[i] > max)
+                {
+                    max = counting[i];
+                }
+                count = 1;
+                
 
-        //    }
-        //}
+            }
+
+            for(int i = 0; i < counting.Length; i++)
+            {
+                if(counting[i] != max)
+                {
+                    sum += counting[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            Console.WriteLine(arr[sum] + " is the most duplicated");
+        }
 
         static int Challenge05(int[] arr)
         {
