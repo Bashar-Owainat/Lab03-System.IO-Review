@@ -9,21 +9,24 @@ namespace SystemIO
         static void Main(string[] args)
         {
 
-            //Chanllenge01();
-            // Challenge02();
-            //Challenge03();
-            int[] arr1 = { 5,7,9};
+            Chanllenge01();
+            Challenge02();
+            Challenge03();
+            int[] arr1 = { 5, 1, 1, 1, 1, 1, 7, 9 };
             Challenge04(arr1);
-            //int[] array = { 5, 5, 200, 21, 65, 30 };
-            //Challenge05(array);
-            //Challenge06();
-            // Challenge07();
-            //Challenge08();
-           // Challenge09();
+            int[] array = { 5, 5, 200, 21, 65, 30 };
+            Challenge05(array);
+            Challenge06();
+            Challenge07();
+            Challenge08();
+            Challenge09();
         }
 
         static int Chanllenge01()
-        {
+        {   
+            Console.WriteLine("This is Challenge number 1");
+            
+
             Console.Write("Please 3 numbers: ");
             String userIput = Console.ReadLine();
             
@@ -62,6 +65,10 @@ namespace SystemIO
 
         static int Challenge02()
         {
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 2");
+
+
             Console.Write("Please enter a number between 2-10: ");
             int userInput = Convert.ToInt32(Console.ReadLine());
             while(userInput < 2 || userInput > 10)
@@ -84,7 +91,11 @@ namespace SystemIO
 
         static void Challenge03()
         {
-            
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 3");
+
+
+
             for (int i = 1; i <= 5; i++)
             {
                 int index = i * 2 - 1;
@@ -122,7 +133,11 @@ namespace SystemIO
 
         static void Challenge04(int[] arr)
         {
-           
+         
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 4");
+
+
             int[] counting = new int[arr.Length];
    
             Array.Sort(arr);
@@ -167,6 +182,10 @@ namespace SystemIO
 
         static int Challenge05(int[] arr)
         {
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 5");
+
+
             int max = arr[0];
             for(int i = 0; i < arr.Length; i++)
             {
@@ -182,15 +201,24 @@ namespace SystemIO
 
         static void Challenge06()
         {
+            Console.WriteLine("This is Challenge number 6");
+            Console.WriteLine("");
+
+
             Console.WriteLine("Please enter a word: ");
             String userInput = Console.ReadLine();
-            String path = @"C:\Users\LEGION\Documents\Challenge06.txt";
+            userInput = userInput + Environment.NewLine  ;
+            String path = "Challenge06.txt";
             File.AppendAllText(path, userInput);
         }
 
         static void Challenge07()
         {
-            String path = @"C:\Users\LEGION\Documents\Challenge06.txt";
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 7");
+
+
+            String path = "Challenge06.txt"; // change it to the defualt path
             String[] fileContent = File.ReadAllLines(path);
             for(int i = 0; i < fileContent.Length; i++)
             {
@@ -198,29 +226,64 @@ namespace SystemIO
             }
         }
 
-
+        static void PrintArr(string[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine("Index "+ i+" "+ arr[i]);
+            }
+        }
         static void Challenge08()
         {
-            String path = @"C:\Users\LEGION\Documents\Challenge06.txt";
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 8");
+
+            String path = "Challenge06.txt";
             String[] fileContent = File.ReadAllLines(path);
-            for (int i = 0; i < fileContent.Length; i++)
-            {
-                Console.WriteLine(fileContent[i]);
-            }
+
+            PrintArr(fileContent);
+
             Console.WriteLine("Enter the index of the line you want to delete(start form 0): ");
+
             int userInput = Convert.ToInt32(Console.ReadLine());
-            String holder =  fileContent[userInput];
+            String holder =  fileContent[userInput]; 
             fileContent[userInput] = "";
             String str = String.Concat(fileContent);
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+                str = str + fileContent[i] + Environment.NewLine;
+            }
+
             File.WriteAllText(path, str);
+            Console.WriteLine("");
 
-            File.AppendAllText(path, holder);
+            Console.WriteLine("This is the file after the deletion");
 
+            PrintArr(fileContent);
+
+            Console.WriteLine("");
+            Console.WriteLine("This is the file after retrieving what has been deleted");
+            fileContent[userInput] =  holder;
+            String newStr ="";
+
+            for (int i = 0; i < fileContent.Length; i++)
+            {
+      
+                    newStr = newStr + fileContent[i] + Environment.NewLine;
+                
+            }
+            File.WriteAllText(path, newStr);
+
+            PrintArr(fileContent);
 
         }
 
         static void Challenge09()
         {
+            Console.WriteLine("");
+            Console.WriteLine("This is Challenge number 9");
+
+
             Console.WriteLine("Enter a sentence: ");
             String userInput = Console.ReadLine();
             String[] arr1 = userInput.Split(" ");
