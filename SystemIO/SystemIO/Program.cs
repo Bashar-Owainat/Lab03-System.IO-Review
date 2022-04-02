@@ -4,22 +4,22 @@ using System.Text;
 
 namespace SystemIO
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
 
-            Chanllenge01();
-            Challenge02();
-            Challenge03();
-            int[] arr1 = { 5, 1, 1, 1, 1, 1, 7, 9 };
-            Challenge04(arr1);
-            int[] array = { 5, 5, 200, 21, 65, 30 };
-            Challenge05(array);
+            //Chanllenge01();
+            //Challenge02();
+            //Challenge03();
+            //int[] arr1 = { 2,2,2,5,5,5};
+            //Challenge04(arr1);
+            //int[] array = { 5, 5, 200, 21, 65, 30 };
+            //Challenge05(array);
             Challenge06();
             Challenge07();
             Challenge08();
-            Challenge09();
+            //Challenge09();
         }
 
         static int Chanllenge01()
@@ -80,9 +80,10 @@ namespace SystemIO
             for(int i = 0; i < userInput; i++)
             {
                 Console.Write(i + 1 + " of " + userInput + " - Enter a number: ");
-                int userNumber = Convert.ToInt32(Console.ReadLine());
-                sum += userNumber;
+                 int userNumber = Convert.ToInt32(Console.ReadLine());
 
+                    sum += userNumber;
+  
             }
             Console.WriteLine("The average of these " + userInput + " numbers is: " + sum / userInput);
             return sum / userInput;
@@ -131,14 +132,15 @@ namespace SystemIO
 
 
 
-        static void Challenge04(int[] arr)
+        public static int Challenge04(int[] originalArr)
         {
          
             Console.WriteLine("");
             Console.WriteLine("This is Challenge number 4");
 
-
-            int[] counting = new int[arr.Length];
+            int[] arr = new int[originalArr.Length];
+            Array.Copy(originalArr, arr, originalArr.Length);
+            int[] counting = new int[originalArr.Length];
    
             Array.Sort(arr);
             int count =1;
@@ -167,7 +169,7 @@ namespace SystemIO
 
             for(int i = 0; i < counting.Length; i++)
             {
-                if(counting[i] != max)
+                if (counting[i] != max)
                 {
                     sum += counting[i];
                 }
@@ -177,10 +179,19 @@ namespace SystemIO
                 }
             }
 
+            //int index;
+            //for(int i = 0; i < originalArr.Length; i++)
+            //{
+            //    if (originalArr[i] == arr[sum])
+            //    {
+            //        index = i;
+            //    }
+            //}
             Console.WriteLine(arr[sum] + " is the most duplicated");
+            return arr[sum];
         }
 
-        static int Challenge05(int[] arr)
+        public static int Challenge05(int[] arr)
         {
             Console.WriteLine("");
             Console.WriteLine("This is Challenge number 5");
@@ -248,33 +259,38 @@ namespace SystemIO
             int userInput = Convert.ToInt32(Console.ReadLine());
             String holder =  fileContent[userInput]; 
             fileContent[userInput] = "";
-            String str = String.Concat(fileContent);
+            // String str = String.Concat(fileContent);
+            string str = "";
             for (int i = 0; i < fileContent.Length; i++)
             {
                 str = str + fileContent[i] + Environment.NewLine;
             }
 
             File.WriteAllText(path, str);
+
+
             Console.WriteLine("");
 
             Console.WriteLine("This is the file after the deletion");
 
             PrintArr(fileContent);
 
-            Console.WriteLine("");
-            Console.WriteLine("This is the file after retrieving what has been deleted");
-            fileContent[userInput] =  holder;
-            String newStr ="";
+            // Note: the code below if you want to retrieve the deleted words
 
-            for (int i = 0; i < fileContent.Length; i++)
-            {
-      
-                    newStr = newStr + fileContent[i] + Environment.NewLine;
-                
-            }
-            File.WriteAllText(path, newStr);
+            //Console.WriteLine("");
+            //Console.WriteLine("This is the file after retrieving what has been deleted");
+            //fileContent[userInput] = holder;
+            //String newStr = "";
 
-            PrintArr(fileContent);
+            //for (int i = 0; i < fileContent.Length; i++)
+            //{
+
+            //    newStr = newStr + fileContent[i] + Environment.NewLine;
+
+            //}
+            //File.WriteAllText(path, newStr);
+
+            //PrintArr(fileContent);
 
         }
 
